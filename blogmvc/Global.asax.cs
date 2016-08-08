@@ -20,7 +20,7 @@ namespace blogmvc
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //aqui pongo el setinitializer de la DB para poder recrearla entera tal cual
-            Database.SetInitializer(new DropCreateDatabaseAlways<ApplicationDbContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<ApplicationDbContext>());
             //using de statemant y cuando se termina se ejecuta el metodo dispose()
             using (var db = new ApplicationDbContext())
             {

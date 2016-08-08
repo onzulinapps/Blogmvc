@@ -33,6 +33,7 @@ namespace blogmvc.Models
         public ApplicationDbContext()
             : base("DefaultConnection")//, throwIfV1Schema: false)
         {
+            Database.SetInitializer<ApplicationDbContext>(new BlogInit());
         }
         
         private string[] databases = { "SQLServer", "PostgreSQL", "MySQL" };
