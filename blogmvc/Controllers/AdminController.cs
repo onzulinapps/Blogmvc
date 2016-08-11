@@ -38,26 +38,24 @@ namespace blogmvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditOption()
         {
-            Option Option = new Option();
-            List<Option> Options = db.Option.ToList();
-            //return View(Options);
-            /*
-            int count = Options.Count();
-            for (int i = 0; i < count; i++ )
+            //realizaremos el registro de los datos 
+            List<Option> Loption = new List<Option>
             {
-                Options.ElementAt(i);
-            }*/
-            * /*
-            if (ModelState.IsValid)
-            {
-                foreach (string OptionName in Options)
-                {
+                new Option { OptionName = "siteurl", OptionValue = UserViewModel.siteurl, Autoload = "yes" },
+                new Option { OptionName = "home", OptionValue = UserViewModel.home, Autoload = "yes" },
+                new Option { OptionName = "blogname", OptionValue = UserViewModel.blogname, Autoload = "yes" },
+                new Option { OptionName = "blogdescription", OptionValue = UserViewModel.bogdescription, Autoload = "yes" },
+                //este campo es el que cualquier usuario puede registrarse
+                new Option { OptionName = "users_can_register", OptionValue = UserViewModel.user_can_register, Autoload = "yes" },
+                new Option { OptionName = "posts_per_page", OptionValue = UserViewModel.post_per_page, Autoload = "yes" },
+                new Option { OptionName = "admin_email", OptionValue = UserViewModel.admin_email, Autoload = "yes" },
 
-                } 
-                
-            }
-            */
-            return View("User", Options);
+
+
+            };
+            Loption.ForEach(s => db.Option.Add(s));
+            db.SaveChanges();
+            return View("User");
         }
 
     }
