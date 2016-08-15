@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,9 +19,12 @@ namespace blogmvc.Controllers
         //GET UserProfile
         public ActionResult UserProfile()
         {
-            //comprobar datos que se muestran en el formulario
+            //el List para rellenar el dropdownlist 
+            UserViewModels UserView = new UserViewModels();
+            var UserCanRegister = UserView.UserCanRegister;
+            ViewBag.UserCanRegister = UserCanRegister;
 
-            return View("User", db.Option.ToList());
+            return View("User");
 
 
         }
@@ -36,7 +40,7 @@ namespace blogmvc.Controllers
         */
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditOption()
+        public ActionResult EditOption(UserViewModels UserViewModel)
         {
             //realizaremos el registro de los datos 
             List<Option> Loption = new List<Option>
@@ -44,7 +48,7 @@ namespace blogmvc.Controllers
                 new Option { OptionName = "siteurl", OptionValue = UserViewModel.siteurl, Autoload = "yes" },
                 new Option { OptionName = "home", OptionValue = UserViewModel.home, Autoload = "yes" },
                 new Option { OptionName = "blogname", OptionValue = UserViewModel.blogname, Autoload = "yes" },
-                new Option { OptionName = "blogdescription", OptionValue = UserViewModel.bogdescription, Autoload = "yes" },
+                new Option { OptionName = "blogdescription", OptionValue = UserViewModel.blogdescription, Autoload = "yes" },
                 //este campo es el que cualquier usuario puede registrarse
                 new Option { OptionName = "users_can_register", OptionValue = UserViewModel.user_can_register, Autoload = "yes" },
                 new Option { OptionName = "posts_per_page", OptionValue = UserViewModel.post_per_page, Autoload = "yes" },
