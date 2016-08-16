@@ -18,14 +18,14 @@ namespace blogmvc.Models
         public string user_can_register { get; set; }
         public string post_per_page { get; set; }
         public string admin_email { get; set; }
-
+        /*
         public IEnumerable<UserCanRegister> UserCanRegister = new List<Models.UserCanRegister>
         {
             new Models.UserCanRegister { option = "no", value = 0},
             new Models.UserCanRegister { option = "yes", value = 1}
 
         };
-
+        */
 
     }
     public class UserCanRegister

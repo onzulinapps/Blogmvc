@@ -27,33 +27,33 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.blogname, "Home:", new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.blogname, "Blogname:", new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.TextBoxFor(model => model.blogname)
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.blogdescription, "Home:", new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.blogdescription, "Blogdescription:", new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.TextBoxFor(model => model.blogdescription)
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.user_can_register, "Home:", new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.user_can_register, "User can register:", new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("DropDownListUsers")
+                    @Html.DropDownList("UserCanRegister", (IEnumerable<SelectListItem>)ViewBag.UserCanRegister, new { id = "UserCanRegister", @class = "form-control" })
 
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.post_per_page, "Home:", new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.post_per_page, "Post per page:", new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.TextBoxFor(model => model.post_per_page)
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.admin_email, "Home:", new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.admin_email, "Admin email:", new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.TextBoxFor(model => model.admin_email)
                 </div>

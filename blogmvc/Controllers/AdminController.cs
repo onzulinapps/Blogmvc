@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,10 +19,13 @@ namespace blogmvc.Controllers
         public ActionResult UserProfile()
         {
             //el List para rellenar el dropdownlist 
-            UserViewModels UserView = new UserViewModels();
-            var UserCanRegister = UserView.UserCanRegister;
+            List<SelectListItem> UserCanRegister = new List<SelectListItem>()
+            {
+                new SelectListItem {Text = "No", Value = "0", Selected = true },
+                new SelectListItem {Text = "Yes", Value = "1" }
+            };
             ViewBag.UserCanRegister = UserCanRegister;
-
+            //ViewData["DropDownListUsers"] = UserCanRegister;
             return View("User");
 
 
@@ -42,6 +44,18 @@ namespace blogmvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditOption(UserViewModels UserViewModel)
         {
+
+            string userCanRegister = Request.Form["UserCanRegister"].ToString();
+            if (userCanRegister == "0")
+            {
+                UserViewModel.user_can_register = "No";
+            }
+            else if (userCanRegister == "1")
+            {
+                UserViewModel.user_can_register = "Yes";
+            }
+            //UserViewModel.user_can_register = Request.Form["UserCanRegister"].ToString();
+            //como lo que queremos hacer es darle el valor No o Si pues lo cambiamos a mano
             //realizaremos el registro de los datos 
             List<Option> Loption = new List<Option>
             {
